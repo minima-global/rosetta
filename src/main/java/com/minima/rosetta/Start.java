@@ -9,6 +9,9 @@ import org.eclipse.jetty.client.api.ContentResponse;
  */
 public class Start 
 {	
+	/**
+	 * The Main Jetty Server used to accept POST requests
+	 */
 	private static JettyServer mMainServer;
 	
     public static void main( String[] args ) throws Exception
@@ -16,16 +19,13 @@ public class Start
     	
     	/*HttpClient client = new HttpClient();
         client.start();
-
         ContentResponse res = client.GET("http://127.0.0.1:10005/block");
-        
         System.out.println(res.getContentAsString());
-        
-        client.stop();
-    	*/
+        client.stop();*/
+    	
     	
         //Create and start server 
-        /*mMainServer = new JettyServer();
+        mMainServer = new JettyServer();
         mMainServer.start();
 		
         //Add a shutdown hook..
@@ -33,7 +33,7 @@ public class Start
 			@Override
 			public void run(){
 				//Shutdown hook called..
-				System.out.println("[!] Shutdown Hook..");
+				System.out.println("[!] Rosetta Shutdown Hook..");
 				
 				//Shut down the whole system
 				try {
@@ -43,6 +43,6 @@ public class Start
 				}
 			}
 		});
-		*/
+		
     }
 }

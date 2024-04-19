@@ -1,5 +1,7 @@
 package com.minima.rosetta.endpoints;
 
-public class block {
+import com.minima.rosetta.BlockingServlet;
+
+public class block extends BlockingServlet {
 
 }

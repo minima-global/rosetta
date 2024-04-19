@@ -14,8 +14,11 @@ public class Start
 	 */
 	private static JettyServer mMainServer;
 	
+	public static final String mVersion = "0.1.0";
+	
     public static void main( String[] args ) throws Exception
     {
+    	System.out.println("Rosetta Server version : "+mVersion);
     	
     	/*HttpClient client = new HttpClient();
         client.start();

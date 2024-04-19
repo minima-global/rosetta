@@ -5,6 +5,9 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
+import com.minima.rosetta.endpoints.networkList;
+import com.minima.rosetta.endpoints.networkStatus;
+
 public class JettyServer {
 	
 	private Server server;
@@ -25,7 +28,10 @@ public class JettyServer {
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
 
+        //Add all the handlers
         servletHandler.addServletWithMapping(BlockingServlet.class, "/status");
+        servletHandler.addServletWithMapping(networkList.class, "/network/list");
+        servletHandler.addServletWithMapping(networkStatus.class, "/network/status");
         
         server.start();
     }

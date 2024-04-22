@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.minima.rosetta.objects.identifiers.BlockIdentifier;
-import com.minima.rosetta.objects.identifiers.TransactionIdentifier;
 
 public class Block {
 

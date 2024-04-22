@@ -1,43 +1,19 @@
 package com.minima.rosetta.endpoints;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 import com.minima.rosetta.jetty.BlockingServlet;
+import com.minima.rosetta.objects.response.NetworkListResponse;
 
 public class networkList extends BlockingServlet {
-
-	protected void doPost(HttpServletRequest request,HttpServletResponse response)
-			throws ServletException, IOException {
-
-		//Log requests..
-		System.out.println("POST REQUEST : "+request.getRequestURI());
+	
+	@Override
+	protected JSONObject getResponse(JSONObject zParams) {
 		
-		BufferedReader br = request.getReader();
+		//Create a NetworkListResponse
+		NetworkListResponse netresp  = new NetworkListResponse();
 		
-		String line = br.readLine();
-		while(line != null) {
-			System.out.println("POST DATA : "+line);
-			line = br.readLine();
-		}
-		
-		//Always reply in JSON
-		response.setContentType("application/json");
-		
-		response.setStatus(HttpServletResponse.SC_OK);
-		
-		response.getWriter().println("{"
-				+ "  \"network_identifiers\": ["
-				+ "    {"
-				+ "      \"blockchain\": \"Minima\","
-				+ "      \"network\": \"mainnet\""
-				+ "    }"
-				+ "  ]"
-				+ "}");
+		return netresp.getObject();
 	}
 	
 }

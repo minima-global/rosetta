@@ -11,7 +11,7 @@ public class networkOptions extends BlockingServlet {
 	@Override
 	protected JSONObject getResponse(JSONObject zParams) {
 		
-		//Create a NetworkListResponse
+		//Create a NetworkOptionsResponse
 		NetworkOptionsResponse nor = new NetworkOptionsResponse();
 		
 		return nor.getObject();

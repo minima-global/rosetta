@@ -12,10 +12,10 @@ import org.json.JSONObject;
 public class SubAccountIdentifier {
 	
 	//Required
-	String 		address;
+	protected String 		address;
 	
 	//Optional
-	JSONObject 	metadata = new JSONObject();
+	protected JSONObject 	metadata = new JSONObject();
 	
 	public SubAccountIdentifier(String zAddress) {
 		address = zAddress;
@@ -26,7 +26,7 @@ public class SubAccountIdentifier {
 		JSONObject ret = new JSONObject();
 		
 		ret.put("address", address);
-		ret.put("metadata", metadata.toString());
+		ret.put("metadata", metadata);
 		
 		return ret;
 	}

@@ -12,10 +12,10 @@ import org.json.JSONObject;
 public class SubNetworkIdentifier {
 	
 	//Required
-	String 		network;
+	protected String 		network;
 	
 	//Optional
-	JSONObject 	meta;
+	protected JSONObject 	meta;
 	
 	public SubNetworkIdentifier(String zNetwork) {
 		network = zNetwork;

@@ -12,11 +12,11 @@ import org.json.JSONObject;
 public class AccountIdentifier {
 	
 	//Required
-	String 		address;
+	protected String 		address;
 	
 	//Optional
-	SubAccountIdentifier sub_account;
-	JSONObject 	metadata;
+	protected SubAccountIdentifier sub_account;
+	protected JSONObject 	metadata;
 	
 	public AccountIdentifier(String zAddress) {
 		address = zAddress;

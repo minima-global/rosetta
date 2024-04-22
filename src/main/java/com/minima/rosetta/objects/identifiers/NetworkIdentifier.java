@@ -11,11 +11,11 @@ import org.json.JSONObject;
 public class NetworkIdentifier {
 
 	//Required	
-	String blockchain;
-	String network;
+	protected String blockchain;
+	protected String network;
 	
 	//Optional
-	SubNetworkIdentifier sub_network_idebtifier;
+	protected SubNetworkIdentifier sub_network_idebtifier;
 	
 	public NetworkIdentifier(String zBlockchain, String zNetwork){
 		blockchain 	= zBlockchain;

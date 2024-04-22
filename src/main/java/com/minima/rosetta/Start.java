@@ -17,14 +17,13 @@ public class Start
 	
     public static void main( String[] args ) throws Exception
     {
-    	System.out.println("Rosetta Server version : "+mVersion);
+    	Log.log("Rosetta Server version : "+mVersion);
     	
     	/*HttpClient client = new HttpClient();
         client.start();
         ContentResponse res = client.GET("http://127.0.0.1:10005/block");
         System.out.println(res.getContentAsString());
         client.stop();*/
-    	
     	
         //Create and start server 
         mMainServer = new JettyServer();
@@ -35,7 +34,7 @@ public class Start
 			@Override
 			public void run(){
 				//Shutdown hook called..
-				System.out.println("[!] Rosetta Shutdown Hook..");
+				Log.log("[!] Rosetta Shutdown Hook..");
 				
 				//Shut down the whole system
 				try {

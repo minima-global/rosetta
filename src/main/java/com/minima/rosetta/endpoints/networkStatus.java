@@ -11,6 +11,8 @@ import com.minima.rosetta.objects.response.NetworkStatusResponse;
 
 public class networkStatus extends BlockingServlet {
 
+	private static long CTIME = System.currentTimeMillis();
+	
 	@Override
 	protected JSONObject getResponse(JSONObject zParams) {
 		
@@ -19,10 +21,10 @@ public class networkStatus extends BlockingServlet {
 		
 		//Get some details..
 		BlockIdentifier current 	= new BlockIdentifier(1, "0x01");
-		long currenttime 			= System.currentTimeMillis();
+		long currenttime 			= CTIME;
 		
-		BlockIdentifier genesis		= new BlockIdentifier(1, "0x00");
-		BlockIdentifier oldest		= new BlockIdentifier(1, "0x00");
+		BlockIdentifier genesis		= new BlockIdentifier(0, "0x00");
+		BlockIdentifier oldest		= new BlockIdentifier(0, "0x00");
 		
 		Peer peer1 = new Peer("0xFF");
 		

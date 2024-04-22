@@ -6,6 +6,7 @@ import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
 import com.minima.rosetta.endpoints.networkList;
+import com.minima.rosetta.endpoints.networkOptions;
 import com.minima.rosetta.endpoints.networkStatus;
 
 public class JettyServer {
@@ -14,7 +15,7 @@ public class JettyServer {
 
     public void start() throws Exception {
     	
-    	int maxThreads = 100;
+    	int maxThreads = 20;
         int minThreads = 10;
         int idleTimeout = 120;
 
@@ -29,9 +30,9 @@ public class JettyServer {
         server.setHandler(servletHandler);
 
         //Add all the handlers
-        servletHandler.addServletWithMapping(BlockingServlet.class, "/status");
         servletHandler.addServletWithMapping(networkList.class, "/network/list");
         servletHandler.addServletWithMapping(networkStatus.class, "/network/status");
+        servletHandler.addServletWithMapping(networkOptions.class, "/network/options");
         
         server.start();
     }

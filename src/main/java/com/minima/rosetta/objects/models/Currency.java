@@ -23,7 +23,5 @@ public class Currency {
 		ret.put("metadata", metadata);
 		
 		return ret;
-		
-		
 	}
 }

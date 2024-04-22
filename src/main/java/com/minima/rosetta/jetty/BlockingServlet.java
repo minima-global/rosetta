@@ -1,4 +1,4 @@
-package com.minima.rosetta;
+package com.minima.rosetta.jetty;
 
 import java.io.BufferedReader;
 import java.io.IOException;

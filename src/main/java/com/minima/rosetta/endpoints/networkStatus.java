@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.minima.rosetta.BlockingServlet;
+import com.minima.rosetta.jetty.BlockingServlet;
 
 public class networkStatus extends BlockingServlet {
 
@@ -48,14 +48,14 @@ public class networkStatus extends BlockingServlet {
 				+ "    \"current_index\": 100,\r\n"
 				+ "    \"target_index\": 150,\r\n"
 				+ "    \"stage\": \"header sync\",\r\n"
-				+ "    \"synced\": \"boolean\"\r\n"
+				+ "    \"synced\": true\r\n"
 				+ "  },\r\n"
 				+ "  \"peers\": [\r\n"
 				+ "    {\r\n"
 				+ "      \"peer_id\": \"0x52bc44d5378309ee2abf1539bf71de1b7d7be3b5\",\r\n"
 				+ "      \"metadata\": null\r\n"
 				+ "    }\r\n"
-				+ "  ]");
+				+ "  ] }");
 	}
 	
 }

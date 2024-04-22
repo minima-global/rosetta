@@ -43,6 +43,14 @@
 		<artifactId>jetty-client</artifactId>
 		<version>9.4.54.v20240208</version>
 	</dependency>
+	
+	<dependency>
+    	<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    <version>20240303</version>
+    
+</dependency>
+
   </dependencies>
 
   <build>

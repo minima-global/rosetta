@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.minima.rosetta.BlockingServlet;
+import com.minima.rosetta.jetty.BlockingServlet;
 
 public class networkList extends BlockingServlet {
 

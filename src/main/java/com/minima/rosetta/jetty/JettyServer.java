@@ -1,4 +1,4 @@
-package com.minima.rosetta;
+package com.minima.rosetta.jetty;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -36,7 +36,7 @@ public class JettyServer {
         server.start();
     }
     
-    void stop() throws Exception {
+    public void stop() throws Exception {
         server.stop();
     }
 }

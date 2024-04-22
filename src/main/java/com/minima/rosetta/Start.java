@@ -1,7 +1,6 @@
 package com.minima.rosetta;
 
-import org.eclipse.jetty.client.HttpClient;
-import org.eclipse.jetty.client.api.ContentResponse;
+import com.minima.rosetta.jetty.JettyServer;
 
 /**
  * Hello world!

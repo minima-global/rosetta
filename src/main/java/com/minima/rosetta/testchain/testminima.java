@@ -1,9 +1,12 @@
 package com.minima.rosetta.testchain;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import com.minima.rosetta.Log;
+import com.minima.rosetta.objects.models.Amount;
 import com.minima.rosetta.objects.models.Transaction;
+import com.minima.rosetta.objects.predefined.MinimaAmount;
 
 public class testminima implements Runnable {
 	
@@ -19,7 +22,7 @@ public class testminima implements Runnable {
 	
 	ArrayList<Transaction> mTransactions = new ArrayList<>();
 	
-	
+	Hashtable<String, Integer> mBalances = new Hashtable<>();
 	
 	public testminima() {
 		
@@ -28,6 +31,11 @@ public class testminima implements Runnable {
 		//Create a genesis block
 		testblock genesis = new testblock(0);
 		mBlocks.add(genesis);
+		
+		//Startup balances..
+		mBalances.put("0xFF", new Integer("1000"));
+		mBalances.put("0xEE", new Integer("0"));
+		mBalances.put("0xDD", new Integer("0"));
 	}
 
 	public void start() {
@@ -74,6 +82,22 @@ public class testminima implements Runnable {
 		return null;
 	}
 	
+	public MinimaAmount getBalance(String zAddress) {
+		Integer bal = mBalances.get(zAddress);
+		return new MinimaAmount(""+bal);
+	}
+	
+	public void updateBalances(String zFrom, String zTo, int zAmount) {
+		Integer frombal = mBalances.get(zFrom);
+		Integer tobal 	= mBalances.get(zTo);
+		
+		int newfrombal  = frombal.intValue()-zAmount;
+		int newtobal  	= tobal.intValue()+zAmount;
+		
+		mBalances.put(zFrom, new Integer(newfrombal));
+		mBalances.put(zTo, new Integer(newtobal));
+	}
+	
 	@Override
 	public void run() {
 		
@@ -87,13 +111,19 @@ public class testminima implements Runnable {
 				
 				testblock newblock = null;
 				if(getBlockNumber() == 3) {
-					//Add a transaction
-					testtransaction tt = new testtransaction();
 					
 					//Get the Transaction
-					Transaction trans = tt.getTransaction();
+					Transaction trans = new customtransaction("0xFF", "0xEE", 100).getTransaction();
+					mTransactions.add(trans);
 					
-					//Add to our list
+					Log.log("Create NEW block..  @ "+getBlockNumber()+" with Transaction "+trans.getObject().toString());
+					
+					newblock = new testblock(getBlockNumber(),trans);
+					
+				}else if(getBlockNumber() == 5) {
+					
+					//Get the Transaction
+					Transaction trans = new customtransaction("0xEE", "0xDD", 10).getTransaction();
 					mTransactions.add(trans);
 					
 					Log.log("Create NEW block..  @ "+getBlockNumber()+" with Transaction "+trans.getObject().toString());

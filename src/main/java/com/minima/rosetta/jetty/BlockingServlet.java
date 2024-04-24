@@ -50,16 +50,17 @@ public abstract class BlockingServlet extends HttpServlet {
 		String randid = Long.toHexString(mRand.nextLong());
 		
 		//Log requests..
-		if(Log.LOGGING_ENABLED) {
+		/*if(Log.LOGGING_ENABLED) {
 			Log.log("POST RECEIVE "+randid+" : "+request.getRequestURI()+" "+json.toString());
-		}
+		}*/
 		
 		//Now run it..
 		JSONObject res = getResponse(json);
 		
 		String resp = res.toString();
 		if(Log.LOGGING_ENABLED) {
-			Log.log("POST REPLY "+randid+" : "+resp);
+			Log.log("POST "+request.getRequestURI()+" "+json.toString()+" REPLY:"+resp);
+			//Log.log("POST REPLY "+randid+" : "+resp);
 		}
 		
 		//Always reply in JSON

@@ -26,16 +26,18 @@ public class accountBalance extends BlockingServlet {
 		ArrayList<Amount> balances = new ArrayList<>();
 		
 		if(address.equals("0xFF")) {
-			balances.add(new MinimaAmount("200000"));
+			balances.add(new MinimaAmount("100"));
+			
 		}else {
-			balances.add(new MinimaAmount("100000"));
+			MinimaAmount bal = testminima.getTestMinima().getBalance(address);
+			balances.add(bal);
 		}
 		
 		BlockIdentifier topblockid = testminima.getTestMinima().getTopBlock().getBlockIdentifier();
 		
 		AccountBalanceResponse acresp = new AccountBalanceResponse(topblockid, balances);
 		
-		return netresp.getObject();
+		return acresp.getObject();
 	}
 	
 }

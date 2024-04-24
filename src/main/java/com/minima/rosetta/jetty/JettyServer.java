@@ -5,6 +5,7 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
+import com.minima.rosetta.endpoints.accountBalance;
 import com.minima.rosetta.endpoints.block;
 import com.minima.rosetta.endpoints.networkList;
 import com.minima.rosetta.endpoints.networkOptions;
@@ -36,6 +37,8 @@ public class JettyServer {
         servletHandler.addServletWithMapping(networkOptions.class, "/network/options");
         
         servletHandler.addServletWithMapping(block.class, "/block");
+        
+        servletHandler.addServletWithMapping(accountBalance.class, "/account/balance");
         
         server.start();
     }

@@ -7,6 +7,7 @@ import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
 import com.minima.rosetta.endpoints.accountBalance;
 import com.minima.rosetta.endpoints.block;
+import com.minima.rosetta.endpoints.blockTransaction;
 import com.minima.rosetta.endpoints.networkList;
 import com.minima.rosetta.endpoints.networkOptions;
 import com.minima.rosetta.endpoints.networkStatus;
@@ -37,6 +38,7 @@ public class JettyServer {
         servletHandler.addServletWithMapping(networkOptions.class, "/network/options");
         
         servletHandler.addServletWithMapping(block.class, "/block");
+        servletHandler.addServletWithMapping(blockTransaction.class, "/block/transaction");
         
         servletHandler.addServletWithMapping(accountBalance.class, "/account/balance");
         

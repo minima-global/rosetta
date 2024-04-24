@@ -28,7 +28,7 @@ public class BlockResponse {
 		for(TransactionIdentifier txnid : other_transactions) {
 			arr.put(txnid.getObject());
 		}
-		ret.put("other_trransactions", arr);
+		ret.put("other_transactions", arr);
 		
 		return ret;
 	}

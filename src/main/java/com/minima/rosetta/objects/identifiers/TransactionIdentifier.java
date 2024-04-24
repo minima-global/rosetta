@@ -10,6 +10,14 @@ public class TransactionIdentifier {
 		hash = zHash;
 	}
 	
+	public TransactionIdentifier(JSONObject zObj) {
+		hash = zObj.getString("hash");
+	}
+	
+	public String getHash() {
+		return hash;
+	}
+	
 	public JSONObject getObject(){
 		
 		JSONObject ret = new JSONObject();

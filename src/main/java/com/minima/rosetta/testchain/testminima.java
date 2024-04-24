@@ -28,9 +28,15 @@ public class testminima implements Runnable {
 		
 		Log.log("Test Minima Chain Created");
 		
+		//Create the gensis txn
+		genesistransaction gentran = new genesistransaction("0xFF", 1000);
+		mTransactions.add(gentran.getTransaction());
+		
 		//Create a genesis block
-		testblock genesis = new testblock(0);
+		testblock genesis = new testblock(0,gentran.getTransaction());
 		mBlocks.add(genesis);
+		
+		Log.log("Create NEW block..  @ 0 with Transaction "+gentran.getTransaction().getObject().toString());
 		
 		//Startup balances..
 		mBalances.put("0xFF", new Integer("1000"));
@@ -46,6 +52,15 @@ public class testminima implements Runnable {
 	
 	public void stop() {
 		mRunning = false;
+	}
+	
+	public Transaction getTransaction(String zTransID) {
+		for(Transaction trans : mTransactions) {
+			if(trans.getTransactionIdentifier().getHash().equals(zTransID)) {
+				return trans;
+			}
+		}
+		return null;
 	}
 	
 	public testblock getTopBlock() {
@@ -72,13 +87,11 @@ public class testminima implements Runnable {
 	}
 	
 	public testblock getBlockFromHash(String zHash) {
-		
 		for(testblock block : mBlocks) {
 			if(block.mBlockID.equals(zHash)) {
 				return block;
 			}
 		}
-		
 		return null;
 	}
 	

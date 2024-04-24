@@ -47,9 +47,9 @@ public class block extends BlockingServlet {
 		Block block = new Block(	cblock.getBlockIdentifier(), 
 									parentblock.getBlockIdentifier(), 
 									cblock.mTimeStamp, 
-									cblock.getTransactions());
+									new ArrayList<>());
 		
-		BlockResponse blkresp = new BlockResponse(block, new ArrayList<>());
+		BlockResponse blkresp = new BlockResponse(block, cblock.getTransactionIDs());
 		
 		return blkresp.getObject();
 	}

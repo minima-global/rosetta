@@ -6,7 +6,7 @@ import com.minima.rosetta.objects.identifiers.CoinIdentifier;
 
 public class CoinChange {
 	
-	enum CoinAction {
+	public enum CoinAction {
 		coin_created,
 		coin_spent
 	}

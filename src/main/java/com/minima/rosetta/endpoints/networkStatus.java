@@ -26,9 +26,9 @@ public class networkStatus extends BlockingServlet {
 		//BlockIdentifier genesis		= new BlockIdentifier(0, "0x00");
 		//BlockIdentifier oldest		= new BlockIdentifier(0, "0x00");
 		
-		BlockIdentifier current 	= topblock.convertTestBlock();
-		BlockIdentifier genesis		= genesisblock.convertTestBlock();;
-		BlockIdentifier oldest		= genesisblock.convertTestBlock();;
+		BlockIdentifier current 	= topblock.getBlockIdentifier();
+		BlockIdentifier genesis		= genesisblock.getBlockIdentifier();;
+		BlockIdentifier oldest		= genesisblock.getBlockIdentifier();;
 		
 		Peer peer1 = new Peer("0xFF");
 		

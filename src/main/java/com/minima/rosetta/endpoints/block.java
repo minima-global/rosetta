@@ -8,6 +8,7 @@ import com.minima.rosetta.jetty.BlockingServlet;
 import com.minima.rosetta.objects.identifiers.PartialBlockIdentifier;
 import com.minima.rosetta.objects.models.Block;
 import com.minima.rosetta.objects.request.BlockRequest;
+import com.minima.rosetta.objects.response.BlockResponse;
 import com.minima.rosetta.testchain.testblock;
 import com.minima.rosetta.testchain.testminima;
 
@@ -43,10 +44,12 @@ public class block extends BlockingServlet {
 			parentblock = testminima.getTestMinima().getBlockFromNum((int) (cblock.mBlockNumber-1));
 		}
 		
-		Block blkresp = new Block(	cblock.convertTestBlock(), 
-									parentblock.convertTestBlock(), 
+		Block block = new Block(	cblock.getBlockIdentifier(), 
+									parentblock.getBlockIdentifier(), 
 									cblock.mTimeStamp, 
-									new ArrayList<>());
+									cblock.getTransactions());
+		
+		BlockResponse blkresp = new BlockResponse(block, new ArrayList<>());
 		
 		return blkresp.getObject();
 	}

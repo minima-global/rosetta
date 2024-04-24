@@ -22,6 +22,14 @@ public class AccountIdentifier {
 		address = zAddress;
 	}
 	
+	public AccountIdentifier(JSONObject zObj) {
+		address = zObj.getString("address");
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
 	public JSONObject getObject(){
 		
 		JSONObject ret = new JSONObject();

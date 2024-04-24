@@ -27,7 +27,7 @@ public class Allow {
 		
 		operation_statuses.add(new SuccessOperationStatus());
 		
-		operation_types.add("TRANSFER");
+		operation_types.add("transfer");
 		
 		errors.add(new ErrorNoConnect());
 	}

@@ -18,6 +18,10 @@ public class Transaction {
 		operations 				= zOperations;
 	}
 	
+	public TransactionIdentifier getTransactionIdentifier() {
+		return transaction_identifier;
+	}
+	
 	public JSONObject getObject(){
 		
 		JSONObject ret = new JSONObject();

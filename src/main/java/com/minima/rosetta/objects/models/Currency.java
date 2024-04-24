@@ -8,10 +8,10 @@ public class Currency {
 	protected int 			decimals;
 	protected JSONObject 	metadata;
 	
-	public Currency(String zSymbol, int zDecimals) {
+	public Currency(String zSymbol, int zDecimals, JSONObject zMeta) {
 		symbol 		= zSymbol;
 		decimals 	= zDecimals;
-		metadata 	= new JSONObject();
+		metadata 	= zMeta;
 	}
 	
 	public JSONObject getObject(){

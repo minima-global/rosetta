@@ -6,9 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.minima.rosetta.objects.identifiers.BlockIdentifier;
-import com.minima.rosetta.objects.identifiers.TransactionIdentifier;
 import com.minima.rosetta.objects.models.Amount;
-import com.minima.rosetta.objects.models.Block;
 
 public class AccountBalanceResponse {
 

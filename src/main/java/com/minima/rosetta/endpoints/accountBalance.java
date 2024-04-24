@@ -10,7 +10,6 @@ import com.minima.rosetta.objects.models.Amount;
 import com.minima.rosetta.objects.predefined.MinimaAmount;
 import com.minima.rosetta.objects.request.AccountBalanceRequest;
 import com.minima.rosetta.objects.response.AccountBalanceResponse;
-import com.minima.rosetta.objects.response.NetworkListResponse;
 import com.minima.rosetta.testchain.testminima;
 
 public class accountBalance extends BlockingServlet {

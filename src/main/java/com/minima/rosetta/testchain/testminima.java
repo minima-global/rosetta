@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import com.minima.rosetta.Log;
-import com.minima.rosetta.objects.models.Amount;
 import com.minima.rosetta.objects.models.Transaction;
 import com.minima.rosetta.objects.predefined.MinimaAmount;
 
@@ -40,8 +39,6 @@ public class testminima implements Runnable {
 		
 		//Startup balances..
 		mBalances.put("0xFF", new Integer("1000"));
-		mBalances.put("0xEE", new Integer("0"));
-		mBalances.put("0xDD", new Integer("0"));
 	}
 
 	public void start() {
@@ -102,13 +99,27 @@ public class testminima implements Runnable {
 	
 	public void updateBalances(String zFrom, String zTo, int zAmount) {
 		Integer frombal = mBalances.get(zFrom);
+		if(frombal == null) {
+			frombal = new Integer(0);
+		}
+		
 		Integer tobal 	= mBalances.get(zTo);
+		if(tobal == null) {
+			tobal = new Integer(0);
+		}
 		
 		int newfrombal  = frombal.intValue()-zAmount;
 		int newtobal  	= tobal.intValue()+zAmount;
 		
 		mBalances.put(zFrom, new Integer(newfrombal));
 		mBalances.put(zTo, new Integer(newtobal));
+	}
+	
+	public testblock createBlockWithTrans(String zFrom, String zTo, int zAmount) {
+		Transaction trans = new customtransaction(zFrom, zTo, zAmount).getTransaction();
+		mTransactions.add(trans);
+		Log.log("Create NEW block..  @ "+getBlockNumber()+" with Transaction "+trans.getObject().toString());
+		return new testblock(getBlockNumber(),trans);
 	}
 	
 	@Override
@@ -124,28 +135,17 @@ public class testminima implements Runnable {
 				
 				testblock newblock = null;
 				if(getBlockNumber() == 3) {
-					
-					//Get the Transaction
-					Transaction trans = new customtransaction("0xFF", "0xEE", 100).getTransaction();
-					mTransactions.add(trans);
-					
-					Log.log("Create NEW block..  @ "+getBlockNumber()+" with Transaction "+trans.getObject().toString());
-					
-					newblock = new testblock(getBlockNumber(),trans);
-					
+					newblock = createBlockWithTrans("0xFF", "0xEE", 100);
+				}else if(getBlockNumber() == 4) {
+					newblock = createBlockWithTrans("0xEE", "0xDD", 7);
 				}else if(getBlockNumber() == 5) {
-					
-					//Get the Transaction
-					Transaction trans = new customtransaction("0xEE", "0xDD", 10).getTransaction();
-					mTransactions.add(trans);
-					
-					Log.log("Create NEW block..  @ "+getBlockNumber()+" with Transaction "+trans.getObject().toString());
-					
-					newblock = new testblock(getBlockNumber(),trans);
-					
+					newblock = createBlockWithTrans("0xEE", "0xAA", 20);
+				}else if(getBlockNumber() == 6) {
+					newblock = createBlockWithTrans("0xAA", "0xDD", 1);
+				}else if(getBlockNumber() == 7) {
+					newblock = createBlockWithTrans("0xEE", "0xFF", 7);
 				}else {
 					Log.log("Create NEW block..  @ "+getBlockNumber());
-					
 					newblock = new testblock(getBlockNumber());
 				} 
 				

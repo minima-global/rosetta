@@ -5,7 +5,6 @@ import java.util.Random;
 
 import com.minima.rosetta.objects.identifiers.BlockIdentifier;
 import com.minima.rosetta.objects.identifiers.TransactionIdentifier;
-import com.minima.rosetta.objects.models.Block;
 import com.minima.rosetta.objects.models.Transaction;
 
 public class testblock {

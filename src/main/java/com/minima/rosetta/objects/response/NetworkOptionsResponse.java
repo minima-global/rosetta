@@ -1,11 +1,7 @@
 package com.minima.rosetta.objects.response;
 
-import java.util.ArrayList;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.minima.rosetta.objects.identifiers.NetworkIdentifier;
 import com.minima.rosetta.objects.models.Allow;
 import com.minima.rosetta.objects.models.Version;
 

@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.minima.rosetta.objects.identifiers.BlockIdentifier;
-import com.minima.rosetta.objects.identifiers.NetworkIdentifier;
 import com.minima.rosetta.objects.models.Peer;
 
 public class NetworkStatusResponse {

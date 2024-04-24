@@ -8,23 +8,27 @@ import com.minima.rosetta.jetty.BlockingServlet;
 import com.minima.rosetta.objects.identifiers.BlockIdentifier;
 import com.minima.rosetta.objects.models.Peer;
 import com.minima.rosetta.objects.response.NetworkStatusResponse;
+import com.minima.rosetta.testchain.testblock;
+import com.minima.rosetta.testchain.testminima;
 
 public class networkStatus extends BlockingServlet {
 
-	private static long CTIME = System.currentTimeMillis();
-	
 	@Override
 	protected JSONObject getResponse(JSONObject zParams) {
 		
-		//Fist talk to Minima..
-		//..
+		//Use the testminima
+		testminima tminima 		= testminima.getTestMinima();
+		testblock topblock 		= tminima.getTopBlock();
+		testblock genesisblock 	= tminima.getGenesisBlock();
 		
 		//Get some details..
-		BlockIdentifier current 	= new BlockIdentifier(1, "0x01");
-		long currenttime 			= CTIME;
+		//BlockIdentifier current 	= new BlockIdentifier(1, "0x01");
+		//BlockIdentifier genesis		= new BlockIdentifier(0, "0x00");
+		//BlockIdentifier oldest		= new BlockIdentifier(0, "0x00");
 		
-		BlockIdentifier genesis		= new BlockIdentifier(0, "0x00");
-		BlockIdentifier oldest		= new BlockIdentifier(0, "0x00");
+		BlockIdentifier current 	= topblock.convertTestBlock();
+		BlockIdentifier genesis		= genesisblock.convertTestBlock();;
+		BlockIdentifier oldest		= genesisblock.convertTestBlock();;
 		
 		Peer peer1 = new Peer("0xFF");
 		
@@ -33,8 +37,11 @@ public class networkStatus extends BlockingServlet {
 		
 		//Create Network Status rtesponse message..
 		NetworkStatusResponse nsr = 
-				new NetworkStatusResponse(	current, currenttime, 
-											genesis, oldest, allpeers);
+				new NetworkStatusResponse(	current, 
+											topblock.mTimeStamp, 
+											genesis, 
+											oldest, 
+											allpeers);
 		
 		return nsr.getObject();
 	}

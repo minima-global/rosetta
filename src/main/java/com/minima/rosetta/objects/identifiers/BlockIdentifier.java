@@ -4,12 +4,25 @@ import org.json.JSONObject;
 
 public class BlockIdentifier {
 
-	long index;
-	String hash;
+	protected long index;
+	protected String hash;
 	
 	public BlockIdentifier(long zIndex, String zHash) {
 		index = zIndex;
 		hash = zHash;
+	}
+	
+	public BlockIdentifier(JSONObject zObject) {
+		index 	= zObject.getLong("index");
+		hash 	= zObject.getString("hash");
+	}
+	
+	public long getIndex() {
+		return index;
+	}
+	
+	public String getHash() {
+		return hash;
 	}
 	
 	public JSONObject getObject(){
@@ -21,5 +34,4 @@ public class BlockIdentifier {
 		
 		return ret;
 	}
-	
 }

@@ -22,6 +22,11 @@ public class NetworkIdentifier {
 		network		= zNetwork;
 	}
 	
+	public NetworkIdentifier(JSONObject zObject){
+		blockchain 	= zObject.getString("blockchain");
+		network		= zObject.getString("network");
+	}
+	
 	public JSONObject getObject(){
 		
 		JSONObject ret = new JSONObject();

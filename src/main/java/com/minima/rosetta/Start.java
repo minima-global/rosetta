@@ -1,6 +1,7 @@
 package com.minima.rosetta;
 
 import com.minima.rosetta.jetty.JettyServer;
+import com.minima.rosetta.testchain.testminima;
 
 /**
  * Hello world!
@@ -29,6 +30,8 @@ public class Start
         mMainServer = new JettyServer();
         mMainServer.start();
 		
+        testminima.getTestMinima().start();
+        
         //Add a shutdown hook..
         Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override
@@ -39,6 +42,9 @@ public class Start
 				//Shut down the whole system
 				try {
 					mMainServer.stop();
+					
+					testminima.getTestMinima().stop();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

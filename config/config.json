@@ -1,0 +1,55 @@
+{
+ "network": {
+  "blockchain": "Minima",
+  "network": "mainnet"
+ },
+ "online_url": "http://localhost:8090",
+ "data_directory": "cli-data",
+ "http_timeout": 10,
+ "max_retries": 5,
+ "retry_elapsed_time": 0,
+ "max_online_connections": 10,
+ "max_sync_concurrency": 5,
+ "tip_delay": 300,
+ "max_reorg_depth": 10,
+ "log_configuration": false,
+ "compression_disabled": false,
+ "l0_in_memory_enabled": false,
+ "all_in_memory_enabled": false,
+ "error_stack_trace_disabled": false,
+ "construction": {
+     "constructor_dsl_file": "minima.ros",
+       "end_conditions": {
+         "create_account": 1,
+         "transfer": 1
+        }
+},
+ "data": {
+  "active_reconciliation_concurrency": 16,
+  "inactive_reconciliation_concurrency": 4,
+  "inactive_reconciliation_frequency": 250,
+  "log_blocks": false,
+  "log_transactions": false,
+  "log_balance_changes": false,
+  "log_reconciliations": false,
+  "ignore_reconciliation_error": false,
+  "exempt_accounts": "",
+  "bootstrap_balances": "",
+  "interesting_accounts": "",
+  "reconciliation_disabled": false,
+  "reconciliation_drain_disabled": false,
+  "inactive_discrepancy_search_disabled": false,
+  "balance_tracking_disabled": false,
+  "coin_tracking_disabled": false,
+  "results_output_file": "",
+  "pruning_block_disabled": false,
+  "pruning_balance_disabled": false,
+  "initial_balance_fetch_disabled":false,
+  "end_conditions":{
+	"index":15,  
+	"tip":true
+      }
+ },
+ "perf": null,
+ "sign": null
+}

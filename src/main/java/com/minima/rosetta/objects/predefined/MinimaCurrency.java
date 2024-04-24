@@ -7,7 +7,7 @@ import com.minima.rosetta.objects.models.Currency;
 public class MinimaCurrency extends Currency {
 
 	public MinimaCurrency() {
-		super("MNMA", 0, new JSONObject());
+		super("MNMA", 0, null);
 	}
 
 }

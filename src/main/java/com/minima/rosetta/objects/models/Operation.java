@@ -7,17 +7,19 @@ import com.minima.rosetta.objects.identifiers.OperationIdentifier;
 
 public class Operation {
 	
-	protected OperationIdentifier operation_identifier;
+	public OperationIdentifier operation_identifier;
 		
-	protected String type;
+	public String type = "";
 	
-	protected String status;
+	public String status = "";
 	
-	protected AccountIdentifier account;
-	protected Amount amount;
-	protected CoinChange coin_change;
+	public AccountIdentifier account;
+	public Amount amount;
 	
-	protected JSONObject metadata = new JSONObject();
+	boolean valid_coin_change = false;
+	public CoinChange coin_change;
+	
+	public JSONObject metadata = new JSONObject();
 	
 	public Operation(	OperationIdentifier zOpIdentifier,
 						String zType,
@@ -31,7 +33,19 @@ public class Operation {
 		status					= zStatus;
 		account					= zAccount;
 		amount					= zAmount;
+		valid_coin_change 		= true;
 		coin_change				= zCoinChange;		
+	}
+	
+	public Operation(JSONObject zObj) {
+		operation_identifier 	= new OperationIdentifier(zObj.getJSONObject("operation_identifier"));
+		type 					= zObj.getString("type");
+		account					= new AccountIdentifier(zObj.getJSONObject("account"));
+		amount					= new Amount(zObj.getJSONObject("amount"));
+		
+		/*if(zObj.has("coin_change")) {
+			coin_change = zObj.getString("coin_change");
+		}*/
 	}
 	
 	public JSONObject getObject(){
